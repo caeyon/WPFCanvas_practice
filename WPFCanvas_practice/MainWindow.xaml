@@ -12,12 +12,12 @@
     <Canvas
         Background="AliceBlue"
         MouseMove="OnMouseMove">
-        <Line
+        <!--<Line
             X1="0" Y1="0"
             X2="{Binding Pos.X}"
             Y2="{Binding Pos.Y}"
             Stroke="Navy"
-            StrokeThickness="5"/>
+            StrokeThickness="5"/>-->
         <!--<Ellipse
             Fill="Yellow"
             Stroke="Navy"
@@ -28,5 +28,25 @@
             Height="100"
             MouseDown="OnMouseDown"
             MouseUp="OnMouseUp"/>-->
+        <Image
+            x:Name="Zudah"
+            Panel.ZIndex="2"
+            Canvas.Left="{Binding Zudah.X, Converter={StaticResource Center}}"
+            Canvas.Top="{Binding Zudah.Y, Converter={StaticResource Center}}"
+            Width="100"
+            Height="100"
+            Source="images/주다.png"
+            MouseDown="OnMouseDown"
+            MouseUp="OnMouseUp"/>
+        <Image
+            x:Name="Kampfer"
+            Panel.ZIndex="1"
+            Width="100"
+            Height="100"
+            Canvas.Left="{Binding Kampfer.X, Converter={StaticResource Center}}"
+            Canvas.Top="{Binding Kampfer.Y, Converter={StaticResource Center}}"
+            Source="images/캠퍼.png"
+            MouseDown="OnMouseDown"
+            MouseUp="OnMouseUp"/>
     </Canvas>
 </Window>

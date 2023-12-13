@@ -22,6 +22,9 @@ public partial class MainWindow : Window
 {
     CanvasViewModel viewModel = new CanvasViewModel();
     private Boolean IsMoving = false;
+    private Image? MovingImage = null;
+    private Point Diff = new Point(0, 0);
+
     public MainWindow()
     {
         InitializeComponent();
@@ -31,11 +34,14 @@ public partial class MainWindow : Window
 
     private void OnMouseDown(object sender, MouseButtonEventArgs e)
     {
+        MovingImage = (Image)sender;
+        Diff = e.GetPosition(MovingImage);
         IsMoving = true;
     }
 
     private void OnMouseUp(object sender, MouseButtonEventArgs e)
     {
+        MovingImage = null;
         IsMoving = false;
     }
 
@@ -44,7 +50,25 @@ public partial class MainWindow : Window
         //MessageBox.Show("마우스 버튼 클릭");
         if (!IsMoving)
             return;
-        
-        viewModel.SetPos(e.GetPosition(this));
+
+        //viewModel.SetPos(e.GetPosition(this));
+
+        Point p = new Point(
+            e.GetPosition(this).X + Center.RADIUS - Diff.X,
+            e.GetPosition(this).Y + Center.RADIUS - Diff.Y);
+
+        switch(MovingImage?.Name)
+        {
+            case "Zudah":
+                //viewModel.Zudah = e.GetPosition(this);
+                viewModel.Zudah = p;
+                break;
+            case "Kampfer":
+                //viewModel.Kampfer = e.GetPosition(this);
+                viewModel.Kampfer = p;
+                break;
+            default:
+                break;
+        }
     }
 }

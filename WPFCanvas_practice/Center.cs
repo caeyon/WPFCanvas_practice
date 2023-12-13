@@ -10,7 +10,7 @@ namespace WPFCanvas_practice;
 
 public class Center : IValueConverter
 {
-    const double RADIUS = 50;
+    public const double RADIUS = 50;
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         return (double)value - RADIUS;
